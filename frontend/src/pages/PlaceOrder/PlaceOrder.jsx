@@ -68,7 +68,7 @@ const PlaceOrder = () => {
   return (
     <>
       <button className="GoBack" onClick={() => navigate("/cart")}>
-        ⬅️Go Back to Cart Page
+        ⬅️ Back
       </button>
 
       <form onSubmit={placeOrder} className="place-order">

@@ -54,10 +54,10 @@ const Navbar = ({ setShowLogin }) => {
           
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-        <button onClick={() => navigate("/admin-login")} className="admin-login-btn">Admin Login</button>
         {!token ? (
           <>
             <button onClick={() => setShowLogin(true)}>Sign In</button>
+            <button onClick={() => navigate("/admin-login")} className="admin-login-btn">Admin Login</button>
           </>
         ) : (
           <div className="navbar-profile">
