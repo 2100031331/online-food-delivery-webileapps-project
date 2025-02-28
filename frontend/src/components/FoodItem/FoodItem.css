@@ -61,3 +61,26 @@
 .food-item-counter img{
     width: 30px;
 }
+.add-to-cart-button {
+    background-color: #ff6600; /* Bright orange */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #e65c00; /* Darker orange */
+    transform: scale(1.05);
+  }
+  
+  .add-to-cart-button:active {
+    background-color: #cc5200; /* Even darker */
+    transform: scale(0.95);
+  }
+  

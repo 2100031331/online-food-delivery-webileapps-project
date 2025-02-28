@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const LoginPopup = ({ setShowLogin }) => {
-  const { url, setToken } = useContext(StoreContext);
+  const { url, setToken, setUserName } = useContext(StoreContext); // Added setUserName
   const [currentState, setCurrentState] = useState("Login");
   const [data, setData] = useState({
     name: "",
@@ -22,13 +22,24 @@ const LoginPopup = ({ setShowLogin }) => {
   const onSubmit = async (event) => {
     event.preventDefault();
     let newUrl = url + (currentState === "Login" ? "/api/user/login" : "/api/user/register");
-    
+  
     try {
       const response = await axios.post(newUrl, data);
       if (response.data.success) {
         if (currentState === "Login") {
           setToken(response.data.token);
           localStorage.setItem("token", response.data.token);
+  
+          // Extract the username from email (before @)
+          let extractedName = data.name || data.email.split("@")[0];
+  
+          // Remove numbers and special characters, keep only letters
+          extractedName = extractedName.match(/[a-zA-Z]+/g)?.join("") || "User";
+  
+          // Store and set username
+          localStorage.setItem("userName", extractedName);
+          setUserName(extractedName);
+  
           toast.success("Login Successfully");
           setShowLogin(false);
         } else {
@@ -41,7 +52,7 @@ const LoginPopup = ({ setShowLogin }) => {
     } catch (error) {
       toast.error("Wrong Credentials. Please try again.");
     }
-  };
+  };  
 
   return (
     <div className="login-popup">

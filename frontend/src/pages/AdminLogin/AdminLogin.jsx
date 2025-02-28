@@ -19,7 +19,6 @@ const AdminLogin = () => {
     e.preventDefault();
     if (credentials.email === ADMIN_EMAIL && credentials.password === ADMIN_PASSWORD) {
       localStorage.setItem("admin", "true"); // Store admin login state
-      toast.success("Admin Logged in Successfully");
       navigate("/admin", { replace: true }); // Navigate immediately
     } else {
       toast.error("Invalid Admin Credentials");
