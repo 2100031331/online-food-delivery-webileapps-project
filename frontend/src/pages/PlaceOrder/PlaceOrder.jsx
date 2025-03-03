@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../context/StoreContext";
-import "./PlaceOrder.css";
+import "./placeorder.css";
 import { deliveryFee } from "../Cart/Cart";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
