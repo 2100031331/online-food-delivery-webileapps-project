@@ -28,7 +28,7 @@ import AdminLogin from "./pages/AdminLogin/AdminLogin";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
-  const url = "http://localhost:4000"; // Backend URL
+  const url = "https://online-food-delivery-webileapps-project.onrender.com"; // Backend URL
 
   // Function to check if admin is logged in
   const isAdminAuthenticated = () => {
