@@ -88,8 +88,7 @@
     position: absolute;
     display: none;
     top: 100%; /* Position below profile icon */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust centering */
+    right: 1px;
     z-index: 10;
     flex-direction: column;
     gap: 10px;
