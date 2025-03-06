@@ -7,9 +7,10 @@ import { toast } from "react-toastify";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount, token, setToken, userName, setUserName } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken, userName, setUserName, setSearchTerm } = useContext(StoreContext);
   const navigate = useNavigate();
-  const [dropdownOpen, setDropdownOpen] = useState(false); // Toggle state
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState(""); // Local state for input
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -20,10 +21,17 @@ const Navbar = ({ setShowLogin }) => {
     navigate("/");
   };
 
+  // Handle Enter key press for search
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      setSearchTerm(searchInput); // Update global search term
+    }
+  };
+
   return (
     <div className="navbar">
       <Link to="/">
-        <h2 alt="" className="logo">BR FOOD DEL</h2> 
+        <h2 alt="" className="logo">FOOD DEL</h2> 
       </Link>
       <ul className="navbar-menu">
         <Link to="/" onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>home</Link>
@@ -31,7 +39,16 @@ const Navbar = ({ setShowLogin }) => {
         <a href="#footer" onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>contact us</a>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+        <div className="navbar-search">
+          <input 
+            type="text" 
+            placeholder="Search food..." 
+            value={searchInput} 
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={handleKeyPress} // Trigger search on Enter key
+          />
+          <img src={assets.search_icon} alt="Search" />
+        </div>
         <div className="navbar-search-icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />
@@ -48,12 +65,12 @@ const Navbar = ({ setShowLogin }) => {
             <img 
               src={assets.profile_icon} 
               alt="Profile" 
-              onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle on click
+              onClick={() => setDropdownOpen(!dropdownOpen)}
               className="profile-icon"
             />
-            <ul className={`nav-profile-dropdown ${dropdownOpen ? "show" : ""}`}> {/* Add .show class dynamically */}
+            <ul className={`nav-profile-dropdown ${dropdownOpen ? "show" : ""}`}>
               <li className="profile-name">
-              <img src={assets.profile_icon} alt="Profile" />
+                <img src={assets.profile_icon} alt="Profile" />
                 <p> {userName}</p>
               </li>
               <hr />
