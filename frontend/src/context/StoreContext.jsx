@@ -5,10 +5,11 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
-  const url = "https://online-food-delivery-webileapps-project.onrender.com";
+  const url = "http://localhost:4000";
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [userName, setUserName] = useState(localStorage.getItem("userName") || ""); // Store username
+  const [userName, setUserName] = useState(localStorage.getItem("userName") || ""); 
   const [food_list, setFoodList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // New state for search input
 
   // Add item to cart
   const addToCart = async (itemId) => {
@@ -69,7 +70,7 @@ const StoreContextProvider = (props) => {
       await fetchFoodList();
       if (localStorage.getItem("token")) {
         setToken(localStorage.getItem("token"));
-        setUserName(localStorage.getItem("userName") || ""); // Load username from localStorage
+        setUserName(localStorage.getItem("userName") || ""); 
         await loadCartData(localStorage.getItem("token"));
       }
     }
@@ -79,13 +80,19 @@ const StoreContextProvider = (props) => {
   // Logout function
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userName"); // Clear username from storage
+    localStorage.removeItem("userName");
     setToken("");
     setUserName("");
   };
 
+  // Filtered food list based on search
+  const filteredFoodList = food_list.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const contextValue = {
     food_list,
+    filteredFoodList, // Added filtered list
     cartItems,
     setCartItems,
     addToCart,
@@ -95,13 +102,14 @@ const StoreContextProvider = (props) => {
     url,
     token,
     setToken,
-    userName, // Added username state
-    setUserName, // Function to update username
+    userName,
+    setUserName,
     logout,
+    searchTerm, // Added search term state
+    setSearchTerm, // Function to update search term
   };
 
   return <StoreContext.Provider value={contextValue}>{props.children}</StoreContext.Provider>;
 };
 
 export default StoreContextProvider;
-
