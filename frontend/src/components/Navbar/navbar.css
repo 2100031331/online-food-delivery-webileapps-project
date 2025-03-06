@@ -8,10 +8,10 @@
 }
 
 .navbar .logo {
-    width: 150px;
+    width: 20%;
     font-weight: 1000;
     color: rgb(58, 17, 9);
-    font-size: 28px;
+    font-size: 38px;
 }
 
 .navbar-menu {
@@ -27,6 +27,32 @@
     display: flex;
     align-items: center;
     gap: 40px;
+}
+
+/* Search box styling */
+.navbar-search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+.navbar-search input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    width: 200px;
+    background: transparent;
+}
+
+.navbar-search img {
+    width: 20px;
+    cursor: pointer;
+    margin-left: 8px;
 }
 
 .navbar button {
@@ -87,7 +113,7 @@
 .nav-profile-dropdown {
     position: absolute;
     display: none;
-    top: 100%; /* Position below profile icon */
+    top: 100%; 
     right: 1px;
     z-index: 10;
     flex-direction: column;
