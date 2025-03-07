@@ -53,4 +53,8 @@
     .header-contents button{
         padding: 2vw 4vw;
     }
+    .header{
+        width: 95%;
+        margin: auto;
+    }
 }
