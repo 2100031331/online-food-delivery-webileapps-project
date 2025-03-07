@@ -63,3 +63,18 @@
         font-size: 14px;
     }
 }
+
+@media (max-width:750px) {
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+    .explore-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 95%;
+        margin: auto;
+    }
+
+}
