@@ -210,6 +210,8 @@
     }
      .navbar .logo {
         width: 120px;
+        font-weight: 800;
+        font-size: 28px;
     }
 }
 
