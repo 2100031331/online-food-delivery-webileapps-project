@@ -25,4 +25,9 @@
       gap: 10px;
       row-gap: 20px;
     }
+     .food-display {
+    margin-top: 30px;
+    width: 90%;
+    margin: auto;
+  }
 }
