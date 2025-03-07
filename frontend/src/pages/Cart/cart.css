@@ -160,4 +160,8 @@
   .cart-promocode {
     justify-content: start;
   }
+    .cart {
+    width: 95%;
+    margin: auto;
+  }
 }
