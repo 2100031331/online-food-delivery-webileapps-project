@@ -208,6 +208,9 @@
     .navbar-menu {
         display: none;
     }
+     .navbar .logo {
+        width: 120px;
+    }
 }
 
 @media (max-width: 750px) {
