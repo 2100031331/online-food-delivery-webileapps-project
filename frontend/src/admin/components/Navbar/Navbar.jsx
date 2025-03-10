@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <h2 alt="" className="logo">BR FOOD DEL</h2> 
+      <h2 alt="" className="logo">FOOD DEL</h2> 
       <div className="navbar-right">
         <button className="admin-logout-btn" onClick={handleLogout}>
           Logout
